@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snippets</title>
+    <link rel="stylesheet" href="/static/bulma.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Highlight -->
+    <link rel="stylesheet" href="/static/monokai-sublime.min.css">
+    <script src="/static/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- Highlight -->
+    <script src="/static/tabIndent.js"></script>
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <section class="section">
+        <div class="container">
+            <div class="block">
+                <button id="add-code-snippet-button" class="button">Add Code Snippet</button>
+                <button id="add-command-snippet-button" class="button">Add Command Snippet</button>
+            </div>
+
+            <div class="block">
+                <input type="text" id="search" placeholder="Type your query here..." class="input">
+            </div>
+
+            <div class="block">
+                <button id="show-all-snippets" class="button" disabled>Show All Snippets</button>
+                <button id="show-only-code-snippets" class="button">Show Only Code Snippets</button>
+                <button id="show-only-command-snippets" class="button">Show Only Command Snippets</button>
+            </div>
+
+            <section id="snippets">
+                <section id="code-snippets">
+                    {% for code_snippet in code_snippets %}
+                    <article class="bottom-margin snippet">
+                        <a class="filter-language" data-language="{{ code_snippet.language | default('No language given', true) }}">
+                            <span class="tag is-info is-medium tag-mod">{{ code_snippet.language | default("No language given", true) }}</span>
+                        </a>
+                        <span class="tag is-primary is-medium tag-mod">Code Snippet</span>
+                        <div class="box no-margin-bottom">
+                            <h3 class="title is-4">
+                                {{ code_snippet.title | default("No title", true) }}
+                                <form action="/delete-code-snippet" method="POST" class="make-inline">
+                                    <input type="hidden" name="id" value="{{ code_snippet.id }}">
+                                    <button class="button is-pulled-right" onclick="return confirm('Are you sure?')">
+                                        <img src="/static/delete.svg" width="20em" height="20em">
+                                    </button>
+                                </form>
+                                <button class="button is-pulled-right small-right-margin edit-code-snippet" data-id="{{ code_snippet.id }}" data-title="{{ code_snippet.title }}" data-snippet="{{ code_snippet.snippet }}" data-format="{{ code_snippet.format }}" data-language="{{ code_snippet.language }}">
+                                    <img src="/static/edit.svg" width="20em" height="20em">
+                                </button>
+                            </h3>
+                            {% if code_snippet.format == "plain_text" %}
+                                <pre><code>{{ code_snippet.snippet }}</code></pre>
+                            {% elif code_snippet.format == "raw_html" %}
+                                {{ code_snippet.snippet | safe }}
+                            {% elif code_snippet.format == "markdown" %}
+                                {{ code_snippet.snippet | markdown | safe }}
+                            {% endif %}
+                        </div>
+                        <span class="tag is-success is-medium tag-mod">Added on {{ code_snippet.created_at }}</span>
+                        <span class="tag is-success is-medium tag-mod">Last updated on {{ code_snippet.updated_at }}</span>
+                    </article>
+                    {% endfor %}
+                </section>
+                <section id="command-snippets">
+                    {% for command_snippet in command_snippets %}
+                    <article class="bottom-margin snippet">
+                        <a class="filter-language">
+                            <span class="tag is-info is-medium tag-mod">{{ command_snippet.platform | default("No platform given", true) }}</span>
+                        </a>
+                        <span class="tag is-primary is-medium tag-mod">Command Snippet</span>
+                        <div class="box no-margin-bottom">
+                            <h3 class="title is-4">
+                                {{ command_snippet.title | default("No title", true) }}
+                                <form action="/delete-command-snippet" method="POST" class="make-inline">
+                                    <input type="hidden" name="id" value="{{ command_snippet.id }}">
+                                    <button class="button is-pulled-right" onclick="return confirm('Are you sure?')">
+                                        <img src="/static/delete.svg" width="20em" height="20em">
+                                    </button>
+                                </form>
+                                <button class="button is-pulled-right small-right-margin edit-command-snippet" data-id="{{ command_snippet.id }}" data-title="{{ command_snippet.title }}" data-snippet="{{ command_snippet.snippet }}" data-format="{{ command_snippet.format }}" data-platform="{{ command_snippet.platform }}">
+                                    <img src="/static/edit.svg" width="20em" height="20em">
+                                </button>
+                            </h3>
+                            {% if command_snippet.format == "plain_text" %}
+                                <pre><code>{{ command_snippet.snippet }}</code></pre>
+                            {% elif command_snippet.format == "raw_html" %}
+                                {{ command_snippet.snippet | safe }}
+                            {% elif command_snippet.format == "markdown" %}
+                                {{ command_snippet.snippet | markdown | safe }}
+                            {% endif %}
+                        </div>
+                        <span class="tag is-success is-medium tag-mod">Added on {{ command_snippet.created_at }}</span>
+                        <span class="tag is-success is-medium tag-mod">Last updated on {{ command_snippet.updated_at }}</span>
+                    </article>
+                    {% endfor %}
+                </section>
+            </section>
+        </div>
+    </section>
+
+    {% include 'modals.html' %}
+</body>
+</html>

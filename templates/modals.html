@@ -1,0 +1,177 @@
+<div class="modal" id="add-code-snippet-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="/add-code-snippet" method="POST">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Something descriptive and useful" name="title">
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Code Snippet</label>
+                    <p class="control">
+                        <textarea class="textarea tabIndent" placeholder="Type or paste your code here" name="snippet" required></textarea>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Format</label>
+                    <p class="control">
+                        <select class="input" name="format">
+                            <option value="plain_text">Plain Text</option>
+                            <option value="raw_html">Raw HTML</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Language</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Python, Java etc etc" name="language">
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary">Submit</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button class="modal-close"></button>
+</div>
+
+<div class="modal" id="add-command-snippet-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="/add-command-snippet" method="POST">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Something descriptive and useful" name="title">
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Command Snippet</label>
+                    <p class="control">
+                        <textarea class="textarea tabIndent" placeholder="Type or paste your command here" name="snippet" required></textarea>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Format</label>
+                    <p class="control">
+                        <select class="input" name="format">
+                            <option value="plain_text">Plain Text</option>
+                            <option value="raw_html">Raw HTML</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Platform</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Windows, Linux etc etc" name="platform">
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary">Submit</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button class="modal-close"></button>
+</div>
+
+<div class="modal" id="edit-code-snippet-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="/edit-code-snippet" method="POST">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Something descriptive and useful" name="title">
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Code Snippet</label>
+                    <p class="control">
+                        <textarea class="textarea tabIndent" placeholder="Type or paste your code here" name="snippet" required></textarea>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Format</label>
+                    <p class="control">
+                        <select class="input" name="format">
+                            <option value="plain_text">Plain Text</option>
+                            <option value="raw_html">Raw HTML</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Language</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Python, Java etc etc" name="language">
+                    </p>
+                </div>
+                <input type="hidden" name="id">
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary">Submit</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button class="modal-close"></button>
+</div>
+
+<div class="modal" id="edit-command-snippet-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="/edit-command-snippet" method="POST">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Something descriptive and useful" name="title">
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Command Snippet</label>
+                    <p class="control">
+                        <textarea class="textarea tabIndent" placeholder="Type or paste your command here" name="snippet" required></textarea>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Format</label>
+                    <p class="control">
+                        <select class="input" name="format">
+                            <option value="plain_text">Plain Code</option>
+                            <option value="raw_html">Raw HTML</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Platform</label>
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Windows, Linux etc etc" name="platform">
+                    </p>
+                </div>
+                <input type="hidden" name="id">
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary">Submit</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button class="modal-close"></button>
+</div>

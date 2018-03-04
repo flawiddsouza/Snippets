@@ -1,0 +1,44 @@
+.make-inline {
+    display: inline;
+}
+
+.small-right-margin {
+    margin-right: 0.5em;
+}
+
+.bottom-margin {
+    margin-bottom: 1.5rem
+}
+
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
+.tag-mod {
+    border-radius: 0;
+}
+
+.tag-mod.is-success {
+    background-color: #abf2c4;
+    color: #3D9991;
+    filter: grayscale(70%);
+}
+
+pre {
+    font-size: 0.9em;
+}
+
+textarea {
+    min-height: 25em !important;
+}
+
+@media screen and (min-width: 1000px) {
+    .modal-content {
+        width: 800px;
+    }
+}
+
+.container {
+    max-width: 50em;
+    width: 50em;
+}
